@@ -26,4 +26,5 @@ class HomePageTests(SimpleTestCase):
 
     def test_homepage_url_resolves_homepageview(self):
         view = resolve("/")
-        self.assertEqual(view.func.__name__, HomePageView.as_view().__name__)
+        # All class based views have the name `view`. Testing the view class is more specific:
+        self.assertEqual(view.func.view_class, HomePageView)
