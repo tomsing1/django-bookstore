@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 import logging
+import sys
 from pathlib import Path
 from environs import Env
 
@@ -175,4 +176,13 @@ MEDIA_ROOT = BASE_DIR / "media"
 # django-debug-toolbar
 DEBUG_TOOLBAR_CONFIG = {
     "SHOW_TOOLBAR_CALLBACK": "debug_toolbar.middleware.show_toolbar_with_docker",
+    "IS_RUNNING_TESTS": False,
 }
+
+# deactivate caching during testing
+if "test" in sys.argv:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.dummy.DummyCache",
+        }
+    }
