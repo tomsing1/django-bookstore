@@ -9,3 +9,5 @@ environs[django]==14.5.0
 pillow==12.1.0
 django-debug-toolbar==6.1.0
 nplusone==1.0.0
+whitenoise==6.11.0
+gunicorn==22.0.0
